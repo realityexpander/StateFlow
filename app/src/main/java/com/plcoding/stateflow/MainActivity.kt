@@ -31,7 +31,8 @@ class MainActivity : AppCompatActivity() {
             )
         }
 
-        lifecycleScope.launchWhenStarted {
+//        lifecycleScope.launch { // will collect in background, and that can cause crashes.
+        lifecycleScope.launchWhenStarted {  // only launch when activity is in Start state
             viewModel.loginUiState.collect {
                 when (it) {
                     is MainViewModel.LoginUiState.Success -> {
